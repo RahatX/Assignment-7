@@ -16,6 +16,7 @@ import { getStatusClass } from "../utils/style";
 function FriendDetailsPage() {
   const [friend, setFriend] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -25,12 +26,27 @@ function FriendDetailsPage() {
       .then((data) => {
         const singleFriend = data.find((item) => item.id === Number(id));
         setFriend(singleFriend);
+        setError("");
+      })
+      .catch(() => {
+        setError("Could not load friend details.");
+      })
+      .finally(() => {
         setLoading(false);
       });
   }, [id]);
 
   if (loading) {
     return <LoadingSpinner />;
+  }
+
+  if (error) {
+    return (
+      <div className="rounded-[28px] border border-[#e7edf5] bg-white p-10 text-center shadow-sm">
+        <h2 className="text-[32px] font-bold tracking-[-0.03em] text-[#233142]">Something went wrong</h2>
+        <p className="mt-3 text-[16px] text-[#6d7b90]">{error}</p>
+      </div>
+    );
   }
 
   if (!friend) {

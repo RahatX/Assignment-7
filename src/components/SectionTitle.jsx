@@ -5,7 +5,9 @@ function SectionTitle({ title, subtitle, eyebrow = "Overview" }) {
       <h2 className="mt-2 text-4xl font-bold tracking-[-0.03em] text-[#233142] sm:text-5xl">
         {title}
       </h2>
-      <p className="mt-3 max-w-2xl text-sm leading-6 text-[#6d7b90] sm:text-base">{subtitle}</p>
+      {subtitle ? (
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-[#6d7b90] sm:text-base">{subtitle}</p>
+      ) : null}
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { getStatsData } from "../utils/storage";
 
 function StatsPage() {
   const chartData = getStatsData();
+  const totalInteractions = chartData.reduce((sum, item) => sum + item.value, 0);
 
   return (
     <section className="px-0 py-10">
@@ -18,31 +19,37 @@ function StatsPage() {
 
         <div className="h-[360px] w-full">
           <div className="h-full w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={chartData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={64}
-                  outerRadius={92}
-                  paddingAngle={6}
-                  dataKey="value"
-                  stroke="none"
-                >
-                  {chartData.map((entry, index) => (
-                    <Cell key={index} fill={entry.color} />
-                  ))}
-                </Pie>
-                <Tooltip
-                  contentStyle={{
-                    borderRadius: 10,
-                    border: "1px solid #e7edf5",
-                    backgroundColor: "#ffffff",
-                  }}
-                />
-              </PieChart>
-            </ResponsiveContainer>
+            {totalInteractions > 0 ? (
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={chartData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={64}
+                    outerRadius={92}
+                    paddingAngle={6}
+                    dataKey="value"
+                    stroke="none"
+                  >
+                    {chartData.map((entry, index) => (
+                      <Cell key={index} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip
+                    contentStyle={{
+                      borderRadius: 10,
+                      border: "1px solid #e7edf5",
+                      backgroundColor: "#ffffff",
+                    }}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex h-full items-center justify-center text-center text-[18px] text-[#6d7b90]">
+                Log some calls, texts, or video chats to see analytics here.
+              </div>
+            )}
           </div>
         </div>
         <div className="mt-2 flex flex-wrap items-center justify-center gap-6 text-sm">
