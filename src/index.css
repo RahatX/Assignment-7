@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg: #f5f8fc;
+  --surface: #ffffff;
+  --line: #e5ebf2;
+  --ink: #233142;
+  --ink-soft: #637188;
+  --green: #245445;
+  --green-soft: #dff5e5;
+  --orange: #f3b64d;
+  --orange-soft: #fff1cc;
+  --yellow: #f1c86d;
+  --purple: #7439e6;
+  --purple-soft: #eadfff;
+  --shadow: 0 6px 24px rgba(35, 49, 66, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.glass-panel {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+
+.section-shell {
+  border: 1px solid var(--line);
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
