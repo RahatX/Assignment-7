@@ -26,15 +26,3 @@ KeenKeeper is a responsive friendship reminder dashboard built for the Programmi
 - Custom footer, loading state, 404 page, and SPA redirect support for deployed route reloads
 - Responsive layouts for mobile, tablet, and desktop screens
 
-## Local Development
-
-```bash
-npm install
-npm run dev
-```
-
-## Production Build
-
-```bash
-npm run build
-```
